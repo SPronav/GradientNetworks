@@ -3,6 +3,14 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 
+def init_W(embed_dim, in_dim):
+    k = np.sqrt(1 / in_dim)
+    return 2*k*torch.rand(embed_dim, in_dim) - k
+
+def init_b(embed_dim, in_dim):
+    k = np.sqrt(1 / in_dim)
+    return 2*k*torch.rand(embed_dim,) - k
+
 class mGradNet_C(nn.Module):
     def __init__(self, num_layers, in_dim, embed_dim, activation):
         super().__init__()
